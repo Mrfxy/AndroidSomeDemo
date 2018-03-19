@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.jtv.videodemo">
+
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+	<uses-permission android:name="android.permission.INTERNET"/>
+	<uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+	<!-- 硬件加速对X5视频播放非常重要，建议开启 -->
+	<uses-permission android:name="android.permission.GET_TASKS"/>
+
+
+	<!-- 友盟推荐的权限 -->
+	<!-- 添加如下权限，以便使用更多的第三方SDK和更精准的统计数据 -->
+	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+	<uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+
+	<uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+
+	<application
+		android:name=".app.MyApplication"
+		android:allowBackup="true"
+		android:icon="@mipmap/ic_launcher"
+		android:label="@string/app_name"
+		android:roundIcon="@mipmap/ic_launcher_round"
+		android:supportsRtl="true"
+		android:theme="@style/AppTheme">
+		<activity android:name=".activity.MainActivity">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN"/>
+
+				<category android:name="android.intent.category.LAUNCHER"/>
+			</intent-filter>
+		</activity>
+		<activity
+			android:name=".activity.TBSActivity"
+			android:configChanges="orientation|screenSize|keyboardHidden"
+			android:windowSoftInputMode="stateHidden|adjustResize"/>
+
+		<!-- TBS 视频播放 -->
+		<activity
+			android:name="com.tencent.smtt.sdk.VideoActivity"
+			android:alwaysRetainTaskState="true"
+			android:configChanges="orientation|screenSize|keyboardHidden"
+			android:exported="false"
+			android:launchMode="singleTask">
+			<intent-filter>
+				<action android:name="com.tencent.smtt.tbs.video.PLAY"/>
+
+				<category android:name="android.intent.category.DEFAULT"/>
+			</intent-filter>
+		</activity>
+		<activity android:name=".activity.UShareActivity">
+		</activity>
+
+		<meta-data
+			android:name="UMENG_APPKEY"
+			android:value="5aa62cbdb27b0a2cdc000199"/>
+		<meta-data
+			android:name="UMENG_CHANNEL"
+			android:value="unknown"/>
+
+		<!--微信回调页面-->
+		<activity  android:name=".wxapi.WXEntryActivity"
+		          android:configChanges="keyboardHidden|orientation|screenSize"
+		          android:exported="true"
+		          android:screenOrientation="portrait"
+		          android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+
+		<!-- 友盟微博分享-->
+		<activity
+			android:name="com.umeng.socialize.media.WBShareCallBackActivity"
+			android:configChanges="keyboardHidden|orientation"
+			android:exported="false"
+			android:screenOrientation="portrait"
+			android:theme="@android:style/Theme.Translucent.NoTitleBar">
+		</activity>
+		<activity
+			android:name="com.sina.weibo.sdk.web.WeiboSdkWebActivity"
+			android:configChanges="keyboardHidden|orientation"
+			android:exported="false"
+			android:windowSoftInputMode="adjustResize"
+			>
+
+		</activity>
+		<activity
+			android:name="com.sina.weibo.sdk.share.WbShareTransActivity"
+			android:launchMode="singleTask"
+			android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen">
+			<intent-filter>
+				<action android:name="com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY"/>
+				<category android:name="android.intent.category.DEFAULT"/>
+			</intent-filter>
+
+		</activity>
+		<!-- 友盟支付宝分享-->
+		<activity
+		android:name=".apshare.ShareEntryActivity"
+		android:configChanges="keyboardHidden|orientation|screenSize"
+		android:exported="true"
+		android:screenOrientation="portrait"
+		android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+
+		<!--友盟qq分享-->
+		<activity
+			android:name="com.tencent.tauth.AuthActivity"
+			android:launchMode="singleTask"
+			android:noHistory="true" >
+
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<category android:name="android.intent.category.BROWSABLE" />
+				<data android:scheme="tencent1106698043" />
+			</intent-filter>
+
+		</activity>
+
+		<activity
+			android:name="com.tencent.connect.common.AssistActivity"
+			android:screenOrientation="portrait"
+			android:theme="@android:style/Theme.Translucent.NoTitleBar"
+			android:configChanges="orientation|keyboardHidden|screenSize"/>
+		<!--分享编辑页(只有新浪微博，精简版，豆瓣，人人，腾讯微博，领英，twitter需要)：-->
+		<activity
+			android:name="com.umeng.socialize.editorpage.ShareActivity"
+			android:excludeFromRecents="true"
+			android:theme="@android:style/Theme.NoTitleBar"
+			/>
+
+	</application>
+
+</manifest>
