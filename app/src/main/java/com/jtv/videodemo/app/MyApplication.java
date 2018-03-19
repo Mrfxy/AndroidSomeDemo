@@ -4,9 +4,12 @@ import android.content.Context;
 import android.support.multidex.MultiDexApplication;
 import android.util.Log;
 
+import com.mob.MobSDK;
 import com.umeng.commonsdk.UMConfigure;
 import com.umeng.socialize.PlatformConfig;
 import com.umeng.socialize.UMShareAPI;
+
+import cn.smssdk.SMSSDK;
 
 
 /**
@@ -28,7 +31,7 @@ public class MyApplication extends MultiDexApplication {
 
         initTBS();
         initUMemng();
-
+        MobSDK.init(this);
 
     }
 

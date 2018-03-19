@@ -31,6 +31,9 @@ public class MainActivity extends AppCompatActivity {
 
             menuList.add("友盟分享");
             activityList.add(UShareActivity.class);
+
+            menuList.add("短信验证码分享");
+            activityList.add(MobSMSActivity.class);
         }
 
         rv_menu.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));

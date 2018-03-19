@@ -110,3 +110,9 @@
 -keep class com.android.dingtalk.share.ddsharemodule.** { *; }
 -keepattributes Signature
 -keep class com.umeng.commonsdk.** {*;}
+
+
+#mob短信验证码
+-keep class com.mob.**{*;}
+-keep class cn.smssdk.**{*;}
+-dontwarn com.mob.**
